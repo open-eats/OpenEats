@@ -1,0 +1,36 @@
+version: '2'
+services:
+  api:
+    command: sh tests.sh
+    build: api/
+    volumes:
+      - static-files:/code/static-files
+      - site-media:/code/site-media
+      - ./api:/code
+    depends_on:
+      - db
+    env_file:
+      env_test.list
+  node:
+    build: frontend/
+    command: npm start
+    volumes:
+      - node_modules:/code/node_modules
+    depends_on:
+      - api
+    ports:
+      - "8080:8080"
+    env_file:
+      env_test.list
+  db:
+    image: mariadb
+    volumes:
+      - database:/var/lib/mysql
+      - ./mariadb:/etc/mysql/conf.d
+    env_file:
+      env_test.list
+volumes:
+  database:
+  node_modules:
+  static-files:
+  site-media:

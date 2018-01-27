@@ -1,0 +1,46 @@
+version: '2.1'
+services:
+  api:
+    image: openeats/api
+    command: /startup/prod-entrypoint.sh
+    restart: on-failure
+    volumes:
+      - static-files:/code/static-files
+      - site-media:/code/site-media
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      env_prod.list
+  node:
+    image: openeats/node
+    command: npm start
+    depends_on:
+      - api
+    env_file:
+      env_prod.list
+  db:
+    image: mariadb
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 20
+    env_file:
+      env_prod.list
+  nginx:
+    image: openeats/nginx
+    command: ./start.sh
+    ports:
+      - "80:80"
+    volumes:
+      - static-files:/var/www/html/openeats-static/static-files
+      - site-media:/var/www/html/openeats-static/site-media
+    depends_on:
+      - api
+      - node
+    env_file:
+      env_prod.list
+volumes:
+  database:
+  static-files:
+  site-media:

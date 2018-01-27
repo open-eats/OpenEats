@@ -1,0 +1,22 @@
+# Database config
+MYSQL_DATABASE=openeats
+MYSQL_ROOT_PASSWORD=root
+
+# Django config
+API_URL=0.0.0.0:8000
+API_PORT=8000
+DJANGO_SECRET_KEY=sdfsadfas32e98zsdvhhsnz6udvbksjdhfi4galshjfg
+DJANGO_SETTINGS_MODULE=base.settings
+DJANGO_DEBUG=True
+
+# If you are serving content behind an HTTPS proxy,
+# Set this to `true`.
+# See: https://docs.djangoproject.com/en/1.10/ref/settings/#secure-proxy-ssl-header
+HTTP_X_FORWARDED_PROTO=false
+
+# Node config
+NODE_ENV=dev
+NODE_URL=localhost:8080
+NODE_PORT=8080
+NODE_API_URL=http://localhost:8000
+NODE_LOCALE=en

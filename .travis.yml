@@ -1,0 +1,19 @@
+sudo: required
+
+language: python
+
+python:
+  - "2.7"
+
+services:
+  - docker
+
+before_install:
+- docker-compose -f docker-compose-test.yml -p test build
+- docker-compose -f docker-compose-test.yml -p test up -d db
+# We are adding a sleep here so that the db has enough time to come online
+- sleep 90
+
+script:
+- docker-compose -f docker-compose-test.yml -p test run --rm --entrypoint 'sh tests.sh' api
+- docker-compose -f docker-compose-test.yml -p test run --rm --entrypoint 'npm test' node

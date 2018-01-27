@@ -1,0 +1,39 @@
+version: '2.1'
+services:
+  api:
+    build: api/
+    command: python manage.py runserver 0.0.0.0:8000
+    env_file:
+      env_dev.list
+    volumes:
+      - ./api:/code
+      - static-files:/code/static-files
+      - site-media:/code/site-media
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+  node:
+    build: frontend/
+    command: npm start
+    env_file:
+      env_dev.list
+    volumes:
+      - ./frontend:/code
+      - node_modules:/code/node_modules
+    depends_on:
+      - api
+    ports:
+      - "8080:8080"
+  db:
+    image: mariadb
+    env_file:
+      env_dev.list
+    volumes:
+      - database:/var/lib/mysql
+      - ./mariadb:/etc/mysql/conf.d
+volumes:
+  database:
+  node_modules:
+  static-files:
+  site-media:
