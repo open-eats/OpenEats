@@ -22,10 +22,27 @@ frontend/jest/
 site-media/
 openeats.sql
 
-openeats-api/
-openeats-web/
-openeats-nginx/
 
 servies/static-files/
 servies/side-media/
+
+
+# Folders
+openeats-api/
+openeats-web/
+openeats-nginx/
+openeats-mobile/
+site-media/
+static-files/
+node_modules/
+.idea/
+
+# Files
+*.DS_Store
+*.pyc
+*.css.map
+*.js.map
+*.log
+*.pyc
 env_prod.list
+docker-compose.override.yml
