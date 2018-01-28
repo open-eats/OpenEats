@@ -1,12 +1,12 @@
-version: '2.1'
+version: '2.3'
 services:
   api:
-    build: api/
+    build: openeats-api/
     command: python manage.py runserver 0.0.0.0:8000
     env_file:
       env_dev.list
     volumes:
-      - ./api:/code
+      - ./openeats-api:/code
       - static-files:/code/static-files
       - site-media:/code/site-media
     depends_on:
@@ -14,12 +14,12 @@ services:
     ports:
       - "8000:8000"
   node:
-    build: frontend/
+    build: openeats-web/
     command: npm start
     env_file:
       env_dev.list
     volumes:
-      - ./frontend:/code
+      - ./openeats-web:/code
       - node_modules:/code/node_modules
     depends_on:
       - api
@@ -31,7 +31,6 @@ services:
       env_dev.list
     volumes:
       - database:/var/lib/mysql
-      - ./mariadb:/etc/mysql/conf.d
 volumes:
   database:
   node_modules:
