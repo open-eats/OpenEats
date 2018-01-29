@@ -12,7 +12,7 @@ services:
         condition: service_healthy
     env_file:
       env_prod.list
-  node:
+  web:
     image: openeats/node
     command: npm start
     depends_on:
@@ -37,7 +37,7 @@ services:
       - site-media:/var/www/html/openeats-static/site-media
     depends_on:
       - api
-      - node
+      - web
     env_file:
       env_prod.list
 volumes:

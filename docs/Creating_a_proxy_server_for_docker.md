@@ -17,7 +17,7 @@
       - site-media:/var/www/html/openeats-static/site-media
     depends_on:
       - api
-      - node
+      - web
     env_file:
       env_prod.list
 ```

@@ -11,9 +11,9 @@ def download_images(version=None):
     print("==================")
     print("Downloading Images")
     print("==================")
-    call(['docker', 'pull', 'openeats/api:' + version])
-    call(['docker', 'pull', 'openeats/node:' + version])
-    call(['docker', 'pull', 'openeats/nginx:' + version])
+    call(['docker', 'pull', 'openeats/openeats-api:' + version])
+    call(['docker', 'pull', 'openeats/openeats-web:' + version])
+    call(['docker', 'pull', 'openeats/openeats-nginx:' + version])
 
 
 def start_containers():
@@ -57,7 +57,7 @@ def start_containers():
 
     call(['docker-compose', '-f', 'docker-prod.yml', 'stop', 'nginx'])
     call(['docker-compose', '-f', 'docker-prod.yml', 'stop', 'api'])
-    call(['docker-compose', '-f', 'docker-prod.yml', 'stop', 'node'])
+    call(['docker-compose', '-f', 'docker-prod.yml', 'stop', 'web'])
     call(['docker-compose', '-f', 'docker-prod.yml', 'up', '-d'])
 
     print("App started. Please wait ~30 seconds for the containers to come online.")

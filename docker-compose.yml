@@ -13,7 +13,7 @@ services:
       - db
     ports:
       - "8000:8000"
-  node:
+  web:
     build: openeats-web/
     command: npm start
     env_file:
