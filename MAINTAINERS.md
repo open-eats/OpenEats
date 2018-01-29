@@ -6,7 +6,7 @@ This file contains information about people who are permitted to make changes in
 Please do not contact the people in this file directly to report problems in OpenEats.
 
 To report problems in OpenEats, please visit:
-https://github.com/RyanNoelk/OpenEats/issues
+https://github.com/open-eats/OpenEats/issues
 
 Maintainers
 ===========

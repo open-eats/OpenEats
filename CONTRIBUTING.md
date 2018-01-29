@@ -95,17 +95,17 @@ project:
    # Navigate to the newly cloned directory
    cd <repo-name>
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/RyanNoelk/OpenEats
+   git remote add upstream https://github.com/open-eats/OpenEats
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
 
    ```bash
-   git checkout <dev-branch>
-   git pull upstream <dev-branch>
+   git checkout master
+   git pull upstream master
    ```
 
-3. Create a new topic branch (off the `dev` branch) to
+3. Create a new topic branch (off the `master` branch) to
    contain your feature, change, or fix:
 
    ```bash
@@ -119,7 +119,7 @@ project:
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
 
    ```bash
-   git pull [--rebase] upstream dev
+   git pull [--rebase] upstream master
    ```
 
 6. Push your topic branch up to your fork:
@@ -129,7 +129,7 @@ project:
    ```
 
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
-    with a clear title and description against the `dev` branch`.
+    with a clear title and description against the `master` branch`.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owner to
 license your work under the same license as that used by the project.

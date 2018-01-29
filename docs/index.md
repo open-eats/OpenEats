@@ -11,4 +11,4 @@ The usage for the app is intended for a single user or a small group. For my per
 - Linking recipes and ingredient grouping
 
 # Contributing
-Please read the [contribution guidelines](https://github.com/RyanNoelk/OpenEats/blob/master/CONTRIBUTING.md) in order to make the contribution process easy and effective for everyone involved.
+Please read the [contribution guidelines](https://github.com/open-eats/OpenEats/blob/master/CONTRIBUTING.md) in order to make the contribution process easy and effective for everyone involved.
