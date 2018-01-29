@@ -1,7 +1,7 @@
 version: '2.3'
 services:
   api:
-    image: openeats/api
+    image: openeats/openeats-api
     command: /startup/prod-entrypoint.sh
     restart: on-failure
     volumes:
@@ -13,7 +13,7 @@ services:
     env_file:
       env_prod.list
   web:
-    image: openeats/node
+    image: openeats/openeats-web
     command: npm start
     depends_on:
       - api
@@ -28,7 +28,7 @@ services:
     env_file:
       env_prod.list
   nginx:
-    image: openeats/nginx
+    image: openeats/openeats-nginx
     command: ./start.sh
     ports:
       - "80:80"

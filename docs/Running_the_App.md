@@ -1,16 +1,25 @@
 # Running the App
 
-The recommended way to run this app is with docker. You can install docker [here](https://www.docker.com/products/overview). If you are not familiar with docker you can read more about it on [their website](https://www.docker.com/what-docker).
+The recommended way to run this app is with docker. You can install docker [here](https://www.docker.com/community-edition#/download). If you are not familiar with docker you can read more about it on [their website](https://www.docker.com/what-docker).
 
 ### Running the app with docker for production
 
-If you are looking to run this in production, there is no need to clone the repo.
+First clone this repo:
+```bash
+git clone https://github.com/open-eats/OpenEats.git
+cd OpenEats
+```
 
-First, create two files:
-- docker-prod.yml - This file can be found in the in the root directory of the repo.
-- env_prod.list - The settings file [sample_env_file_for_docker.list](sample_env_file_for_docker.list) can be used as an example.
+Then, create two files from the sample files:
+- docker-prod.override.yml
+- env_prod.list
 
-The `docker-prod.yml` contains the list of images and commands to run the app. It comes with an nginx reverse proxy that by default will run on port 80. You will most likely want to change the port that nginx runs on as well as use a fix tag for the image. By default, all are set to latest.
+```bash
+cp docker-prod.override.yml docs/sample_docker_prod_override.yml
+cp env_prod.list docs/sample_env_file.list
+```
+
+The `docker-prod.override.yml` contains the list of images to run the app. It comes with an nginx reverse proxy that by default will run on port 80. You will most likely want to change the port that nginx runs on as well as use a fix tag for the image. By default, all are set to latest.
 
 #### Configure the environment file
 Most of the settings in your `env_prod.list` can stay the same as `env_stg.list` that is in this repo. There are a few config settings that need to be changed for most configurations. See [Setting_up_env_file.md](Setting_up_env_file.md) for a complete description of the environment variables.
@@ -21,24 +30,17 @@ Most of the settings in your `env_prod.list` can stay the same as `env_stg.list`
 - [NODE_API_URL](Setting_up_env_file.md#NODE_API_URL)
 
 
-Once the files have been created run:
+Once the files have been created run the command below and replace the version with version of OpenEats you want to run. You can also leave this blank (this will pull the latest code)
 
 ```bash
-docker-compose -f docker-prod.yml up -d
+./quick-start.py 1.0.3
 ```
-
-### Running the app with docker for development
+OR
 ```bash
-git clone https://github.com/RyanNoelk/OpenEats.git
-cd OpenEats
-git checkout dev
-docker-compose build
-docker-compose up -d
+./quick-start.py
 ```
 
 ### First Time Setup
-
-Regardless of if your running the app in production or development, you need to seed the database.
 
 To create a super user:
 ``` bash

@@ -45,4 +45,5 @@ node_modules/
 *.log
 *.pyc
 env_prod.list
+docker-prod.override.yml
 docker-compose.override.yml
