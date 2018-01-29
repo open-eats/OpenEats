@@ -6,6 +6,11 @@ from os import getcwd
 from subprocess import call, Popen, PIPE
 
 
+def update_image_tags(version=None):
+    version = version if version is not None else 'latest'
+    # TODO: need to update the docker-prod.override.yml and add the proper tags
+
+
 def download_images(version=None):
     version = version if version is not None else 'latest'
     print("==================")
@@ -55,10 +60,10 @@ def start_containers():
             shell=True
         )
 
-    call(['docker-compose', '-f', 'docker-prod.yml', 'stop', 'nginx'])
-    call(['docker-compose', '-f', 'docker-prod.yml', 'stop', 'api'])
-    call(['docker-compose', '-f', 'docker-prod.yml', 'stop', 'web'])
-    call(['docker-compose', '-f', 'docker-prod.yml', 'up', '-d'])
+    call(['docker-compose', '-f', 'docker-prod.yml', '-f', 'docker-prod.override.yml', 'stop', 'nginx'])
+    call(['docker-compose', '-f', 'docker-prod.yml', '-f', 'docker-prod.override.yml', 'stop', 'api'])
+    call(['docker-compose', '-f', 'docker-prod.yml', '-f', 'docker-prod.override.yml', 'stop', 'web'])
+    call(['docker-compose', '-f', 'docker-prod.yml', '-f', 'docker-prod.override.yml', 'up', '-d'])
 
     print("App started. Please wait ~30 seconds for the containers to come online.")
 
@@ -67,8 +72,10 @@ if __name__ == '__main__':
     from sys import argv
     print("OpenEats quick setup script")
     try:
+        update_image_tags(argv[1])
         download_images(argv[1])
     except IndexError:
+        update_image_tags(None)
         download_images(None)
 
     start_containers()
