@@ -40,6 +40,12 @@ OR
 ./quick-start.py
 ```
 
+The quick start script will do a few things.
+1. Creates a `docker-prod.version.yml` file with the required image tags.
+2. Downloads the required images.
+3. Takes a backup of the database and your images.
+4. Restarts the OpenEats servers.
+
 ### First Time Setup
 
 To create a super user:

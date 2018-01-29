@@ -1,10 +1,5 @@
 version: '2.3'
 services:
-  api:
-    image: openeats/openeats-api
-  web:
-    image: openeats/openeats-web
   nginx:
-    image: openeats/openeats-nginx
     ports:
       - "80:80"
