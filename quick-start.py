@@ -8,8 +8,7 @@ from subprocess import call, Popen, PIPE
 
 def update_image_tags(version=None):
     version = version if version is not None else 'latest'
-    version = '''
-    version: '2.3'
+    version = '''version: '2.3'
       services:
         api:
           image: openeats/openeats-api:%s
