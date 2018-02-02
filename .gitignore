@@ -32,6 +32,7 @@ openeats-api/
 openeats-web/
 openeats-nginx/
 openeats-mobile/
+openeats-demo/
 site-media/
 static-files/
 node_modules/
