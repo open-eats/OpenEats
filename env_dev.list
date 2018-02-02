@@ -15,8 +15,8 @@ DJANGO_DEBUG=True
 HTTP_X_FORWARDED_PROTO=false
 
 # Node config
-NODE_ENV=dev
+NODE_ENV=demo
 NODE_URL=localhost:8080
 NODE_PORT=8080
-NODE_API_URL=http://localhost:8000
+NODE_API_URL=
 NODE_LOCALE=en
