@@ -30,8 +30,6 @@ services:
   nginx:
     image: openeats/openeats-nginx
     command: ./start.sh
-    ports:
-      - "80:80"
     volumes:
       - static-files:/var/www/html/openeats-static/static-files
       - site-media:/var/www/html/openeats-static/site-media
