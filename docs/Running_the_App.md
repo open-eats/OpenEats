@@ -15,11 +15,11 @@ Then, create two files from the sample files:
 - env_prod.list
 
 ```bash
-cp docker-prod.override.yml docs/sample_docker_prod_override.yml
-cp env_prod.list docs/sample_env_file.list
+cp docker-prod.override.yml docs/sample/sample_docker_prod_override.yml
+cp env_prod.list docs/sample/sample_env_file.list
 ```
 
-The `docker-prod.override.yml` contains the list of images to run the app. It comes with an nginx reverse proxy that by default will run on port 80. You will most likely want to change the port that nginx runs on as well as use a fix tag for the image. By default, all are set to latest.
+The `docker-prod.override.yml` specifies the port that OpenEats is served from as well as any override commands you have. The nginx reverse proxy will default to run on port 80. You will most likely want to change the port that nginx runs on. See [Creating a proxy serve for docker](Creating_a_proxy_server_for_docker.md) for more information on how to configure an nginx server to serve OpenEats.
 
 #### Configure the environment file
 Most of the settings in your `env_prod.list` can stay the same as `env_stg.list` that is in this repo. There are a few config settings that need to be changed for most configurations. See [Setting_up_env_file.md](Setting_up_env_file.md) for a complete description of the environment variables.

@@ -4,7 +4,7 @@ The recommended way to run this app is with docker. You can install docker [here
 
 ### Running the app with docker for development
 
-First you'll need to fork the appropriate repo that you are looking to make changes to.
+First you'll need to fork the appropriate repo that you are looking to make changes to, alone witht he core repo. See below for a sample.
 
 ```bash
 git clone https://github.com/open-eats/OpenEats.git
