@@ -22,6 +22,8 @@ The usage for the app is intended for a single user or a small group. For my per
 
 ### [Read the docs on getting started here!](https://github.com/open-eats/OpenEats/blob/master/docs/Running_the_App.md)
 
+### [The Update guide can be found here!](https://github.com/open-eats/OpenEats/blob/master/docs/Updating_the_App.md)
+
 # Contributing
 Please read the [contribution guidelines](https://github.com/open-eats/OpenEats/blob/master/CONTRIBUTING.md) in order to make the contribution process easy and effective for everyone involved.
 
