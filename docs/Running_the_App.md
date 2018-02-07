@@ -54,7 +54,7 @@ docker-compose -f docker-prod.yml run --rm --entrypoint 'python manage.py create
 ```
 Follow the prompts given to create your user. You can do this as many times as you like.
 
-If you are an english user, it is highly recommended to add course and cuisine data. Run `docker-compose run --rm api bash` to open a bash shell to the API. Then:
+If you are an english user, it is highly recommended to add course and cuisine data. Run `docker-compose run --rm api sh` to open a bash shell to the API. Then:
 ```bash
 ./manage.py loaddata course_data.json
 ./manage.py loaddata cuisine_data.json
