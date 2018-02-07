@@ -15,8 +15,8 @@ Then, create two files from the sample files:
 - env_prod.list
 
 ```bash
-cp docker-prod.override.yml docs/sample/sample_docker_prod_override.yml
-cp env_prod.list docs/sample/sample_env_file.list
+cp docs/samples/sample_docker_prod_override.yml docker-prod.override.yml 
+cp docs/samples/sample_env_file.list env_prod.list
 ```
 
 The `docker-prod.override.yml` specifies the port that OpenEats is served from as well as any override commands you have. The nginx reverse proxy will default to run on port 80. You will most likely want to change the port that nginx runs on. See [Creating a proxy serve for docker](Creating_a_proxy_server_for_docker.md) for more information on how to configure an nginx server to serve OpenEats.
