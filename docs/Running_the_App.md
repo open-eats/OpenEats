@@ -24,10 +24,21 @@ The `docker-prod.override.yml` specifies the port that OpenEats is served from a
 #### Configure the environment file
 Most of the settings in your `env_prod.list` can stay the same as `env_stg.list` that is in this repo. There are a few config settings that need to be changed for most configurations. See [Setting_up_env_file.md](Setting_up_env_file.md) for a complete description of the environment variables.
 
-- [DATABASE_PASSWORD](Setting_up_env_file.md#DATABASE_PASSWORD)
+- [DATABASE_PASSWORD](Setting_up_env_file.md#MYSQL_ROOT_PASSWORD)
 - [DJANGO_SECRET_KEY](Setting_up_env_file.md#DJANGO_SECRET_KEY)
 - [ALLOWED_HOST](Setting_up_env_file.md#ALLOWED_HOST)
 - [NODE_API_URL](Setting_up_env_file.md#NODE_API_URL)
+
+
+#### Connecting to a remote DB
+If you are connecting the API to a remote DB (any non-dockerized DB) you need to setup the following configs to your env file.
+
+- [MYSQL_DATABASE](Setting_up_env_file.md#MYSQL_DATABASE)
+- [MYSQL_USER](Setting_up_env_file.md#MYSQL_USER)
+- [MYSQL_HOST](Setting_up_env_file.md#MYSQL_HOST)
+- [MYSQL_PORT](Setting_up_env_file.md#MYSQL_PORT)
+
+You will also need to edit your `docker-prod.yml` file to remove the database from the setup process.
 
 
 Once the files have been created run the command below and replace the version with version of OpenEats you want to run. You can also leave this blank (this will pull the latest code)

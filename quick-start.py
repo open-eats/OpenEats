@@ -51,6 +51,9 @@ def start_containers():
             ' > openeats.sql',
             shell=True
         )
+    elif 'MYSQL_HOST' in open('env_prod.list').read():
+        # TODO: add process to backup remote DB
+        print("Using remote DB...")
     else:
         print("Creating the DB. This may take a minute...")
         call(['docker-compose', '-f', 'docker-prod.yml', 'up', '-d', 'db'])
