@@ -22,7 +22,7 @@ cp docs/samples/sample_env_file.list env_prod.list
 The `docker-prod.override.yml` specifies the port that OpenEats is served from as well as any override commands you have. The nginx reverse proxy will default to run on port 80. You will most likely want to change the port that nginx runs on. See [Creating a proxy serve for docker](Creating_a_proxy_server_for_docker.md) for more information on how to configure an nginx server to serve OpenEats.
 
 #### Configure the environment file
-Most of the settings in your `env_prod.list` can stay the same as `env_stg.list` that is in this repo. There are a few config settings that need to be changed for most configurations. See [Setting_up_env_file.md](Setting_up_env_file.md) for a complete description of the environment variables.
+Most of the settings in your `env_prod.list` can stay the same as `env_stg.list` that is in this repo. There are a few config settings that need to be changed for most configurations. See [Setting_up_env_file.md](samples/Setting_up_env_file.md) for a complete description of the environment variables.
 
 - [DATABASE_PASSWORD](Setting_up_env_file.md#MYSQL_ROOT_PASSWORD)
 - [DJANGO_SECRET_KEY](Setting_up_env_file.md#DJANGO_SECRET_KEY)
