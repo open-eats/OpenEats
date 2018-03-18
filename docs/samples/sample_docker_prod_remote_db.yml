@@ -1,0 +1,32 @@
+version: '2.3'
+services:
+  api:
+    image: openeats/openeats-api
+    command: /startup/prod-entrypoint.sh
+    restart: on-failure
+    volumes:
+      - static-files:/code/static-files
+      - site-media:/code/site-media
+    env_file:
+      env_prod.list
+  web:
+    image: openeats/openeats-web
+    command: npm start
+    depends_on:
+      - api
+    env_file:
+      env_prod.list
+  nginx:
+    image: openeats/openeats-nginx
+    command: ./start.sh
+    volumes:
+      - static-files:/var/www/html/openeats-static/static-files
+      - site-media:/var/www/html/openeats-static/site-media
+    depends_on:
+      - api
+      - web
+    env_file:
+      env_prod.list
+volumes:
+  static-files:
+  site-media:
