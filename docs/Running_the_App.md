@@ -38,7 +38,7 @@ If you are connecting the API to a remote DB (any non-dockerized DB) you need to
 - [MYSQL_HOST](Setting_up_env_file.md#MYSQL_HOST)
 - [MYSQL_PORT](Setting_up_env_file.md#MYSQL_PORT)
 
-You will also need to edit your `docker-prod.yml` file to remove the database from the setup process. See [this docker yml](docs/sample_docker_prod_remote_db.yml) for an example.
+You will also need to edit your `docker-prod.yml` file to remove the database from the setup process. See [this docker yml](sample_docker_prod_remote_db.yml) for an example.
 
 Once the files have been created run the command below and replace the version with version of OpenEats you want to run. You can also leave this blank (this will pull the latest code)
 
