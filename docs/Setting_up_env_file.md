@@ -12,10 +12,25 @@ The database name.
 
 EX: `MYSQL_DATABASE=openeats`
 
-#### MYSQL_ROOT_PASSWORD=root
-The password for the database.
+#### MYSQL_USER
+The user for the database.
+
+EX: `MYSQL_USER=openeats`
+
+#### MYSQL_ROOT_PASSWORD
+The password for the user given above.
 
 EX: `MYSQL_ROOT_PASSWORD=root`
+
+#### MYSQL_HOST
+The address or hostname of the DB. Do not include this in your env file if you are using docker to house the DB.
+
+EX: `MYSQL_HOST=my.db.com`
+
+#### MYSQL_PORT
+The port the database is exposed on.
+
+EX: `MYSQL_PORT=3306`
 
 
 ## Django config
