@@ -1,8 +1,8 @@
 # Running the App
 
-The recommended way to run this app is with docker. You can install docker [here](https://www.docker.com/community-edition#/download). If you are not familiar with docker you can read more about it on [their website](https://www.docker.com/what-docker).
+The recommended way to run this app is with docker and docker-compose. You can install docker [here](https://www.docker.com/community-edition#/download) and docker-compose [here](https://docs.docker.com/compose/install/#prerequisites). If you are not familiar with docker you can read more about it on [their website](https://www.docker.com/what-docker).
 
-### Running the app with docker for production
+### Setup docker configuration for production
 
 First clone this repo:
 ```bash
@@ -15,11 +15,11 @@ Then, create two files from the sample files:
 - env_prod.list
 
 ```bash
-cp docs/samples/sample_docker_prod_override.yml docker-prod.override.yml 
+cp docs/samples/sample_docker_prod_override.yml docker-prod.override.yml
 cp docs/samples/sample_env_file.list env_prod.list
 ```
 
-The `docker-prod.override.yml` specifies the port that OpenEats is served from as well as any override commands you have. The nginx reverse proxy will default to run on port 80. You will most likely want to change the port that nginx runs on. See [Creating a proxy serve for docker](Creating_a_proxy_server_for_docker.md) for more information on how to configure an nginx server to serve OpenEats.
+The `docker-prod.override.yml` specifies the port that OpenEats is served from as well as any override commands you have. The nginx reverse proxy will default to run on port 80. You will most likely want to change the port that nginx runs on. See [Creating a proxy server for docker](Creating_a_proxy_server_for_docker.md) for more information on how to configure an nginx server to serve OpenEats.
 
 #### Configure the environment file
 Most of the settings in your `env_prod.list` can stay the same as `env_stg.list` that is in this repo. There are a few config settings that need to be changed for most configurations. See [Setting_up_env_file.md](Setting_up_env_file.md) for a complete description of the environment variables.
@@ -39,6 +39,8 @@ If you are connecting the API to a remote DB (any non-dockerized DB) you need to
 - [MYSQL_PORT](Setting_up_env_file.md#MYSQL_PORT)
 
 You will also need to edit your `docker-prod.yml` file to remove the database from the setup process. See [this docker yml](samples/sample_docker_prod_remote_db.yml) for an example.
+
+### Start docker containers
 
 Once the files have been created run the command below and replace the version with version of OpenEats you want to run. You can also leave this blank (this will pull the latest code)
 
