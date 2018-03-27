@@ -14,7 +14,7 @@ services:
       env_prod.list
   web:
     image: openeats/openeats-web
-    command: npm start
+    command: yarn start
     depends_on:
       - api
     volumes:

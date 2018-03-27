@@ -14,7 +14,7 @@ services:
       env_stg.list
   web:
     build: openeats-web/
-    command: npm start
+    command: yarn start
     volumes:
       - node_modules:/code/node_modules
       - public-ui:/code/build
