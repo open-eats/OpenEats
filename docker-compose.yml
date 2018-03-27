@@ -15,7 +15,7 @@ services:
       - "8000:8000"
   web:
     build: openeats-web/
-    command: npm start
+    command: yarn start
     env_file:
       env_dev.list
     volumes:

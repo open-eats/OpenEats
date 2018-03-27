@@ -14,9 +14,11 @@ services:
       env_prod.list
   web:
     image: openeats/openeats-web
-    command: npm start
+    command: yarn start
     depends_on:
       - api
+    volumes:
+      - public-ui:/code/build
     env_file:
       env_prod.list
   db:
@@ -33,6 +35,7 @@ services:
     volumes:
       - static-files:/var/www/html/openeats-static/static-files
       - site-media:/var/www/html/openeats-static/site-media
+      - public-ui:/var/www/html/openeats-static/public-ui
     depends_on:
       - api
       - web
@@ -40,5 +43,6 @@ services:
       env_prod.list
 volumes:
   database:
+  public-ui:
   static-files:
   site-media:
