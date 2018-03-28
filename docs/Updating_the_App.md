@@ -15,11 +15,15 @@ There should only be changes to these files in major releases (IE. 2.0.0, 3.0.0)
 Once you know your env and docker compose files are up to date, Run:
 
 ```bash
-./quick-start.py 1.0.3
+./quick-start.py -t 1.0.3
 ```
 OR
 ```bash
 ./quick-start.py
+```
+OR
+```bash
+./quick-start.py --help
 ```
 
 The quick start script will do a few things.

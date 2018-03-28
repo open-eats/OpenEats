@@ -45,11 +45,15 @@ You will also need to edit your `docker-prod.yml` file to remove the database fr
 Once the files have been created run the command below and replace the version with version of OpenEats you want to run. You can also leave this blank (this will pull the latest code)
 
 ```bash
-./quick-start.py 1.0.3
+./quick-start.py -t 1.0.3
 ```
 OR
 ```bash
 ./quick-start.py
+```
+OR
+```bash
+./quick-start.py --help
 ```
 
 The quick start script will do a few things.
