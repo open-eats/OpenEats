@@ -7,6 +7,14 @@ from subprocess import call, Popen, PIPE
 
 
 def update_image_tags(version=None):
+    """
+    A simple function to configure the OpenEats version.
+
+    :param version: The version of OpenEats the users wants to run.
+                    This is a git Tag.
+    :return: A file called `docker-prod.version.yml`.
+             With the version of each image to pull.
+    """
     version = version if version is not None else 'latest'
     version = '''version: '2.3'
 services:
@@ -22,6 +30,7 @@ services:
 
 
 def download_images(version=None):
+    """ Download the required images """
     version = version if version is not None else 'latest'
     print("==================")
     print("Downloading Images")
@@ -32,10 +41,18 @@ def download_images(version=None):
 
 
 def start_containers():
+    """
+    Takes a back up of the Recipe images and DB.
+    Restarts OpenEats with a new (or the same) version.
+    """
     print("==================")
     print("Starting OpenEats")
     print("==================")
 
+    # Check if the DB is up and running locally.
+    # If it is then take a backup.
+    # If the user is using a remote DB, do nothing.
+    # If no DB is found, Start the docker DB and wait 45s to start.
     p = Popen(
         ['docker', 'ps', '-q', '-f', 'name=openeats_db_1'],
         stdin=PIPE,
@@ -59,6 +76,9 @@ def start_containers():
         call(['docker-compose', '-f', 'docker-prod.yml', 'up', '-d', 'db'])
         sleep(45)
 
+    # Check if the API is up.
+    # If it is then take a backup of the Recipe images folder.
+    # The backup folder is called `site-media`.
     p = Popen(
         ['docker', 'ps', '-q', '-f', 'name=openeats_api_1'],
         stdin=PIPE,
@@ -73,6 +93,8 @@ def start_containers():
             shell=True
         )
 
+    # Stop each container that needs to be updated.
+    # Don't stop the DB! There is no reason to.
     call([
         'docker-compose',
         '-f', 'docker-prod.yml',
@@ -94,6 +116,8 @@ def start_containers():
         '-f', 'docker-prod.override.yml',
         'stop', 'web'
     ])
+
+    # Start all the containers
     call([
         'docker-compose',
         '-f', 'docker-prod.yml',
@@ -106,13 +130,21 @@ def start_containers():
 
 
 if __name__ == '__main__':
-    from sys import argv
-    print("OpenEats quick setup script")
-    try:
-        update_image_tags(argv[1])
-        download_images(argv[1])
-    except IndexError:
-        update_image_tags(None)
-        download_images(None)
+    import argparse
+    parser = argparse.ArgumentParser(
+        description='OpenEats quick setup script. '
+                    'This script will restart your OpenEats server and '
+                    'take a database and recipe image backup.'
+    )
+    parser.add_argument(
+        '-t',
+        '--tag',
+        type=str,
+        help='The git tag of OpenEats you want to run. '
+             'If not included, then the master branch will be used.'
+    )
+    args = parser.parse_args()
 
+    update_image_tags(args.tag)
+    download_images(args.tag)
     start_containers()
