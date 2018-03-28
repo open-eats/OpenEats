@@ -1,0 +1,8 @@
+{
+  "tag": "1.1.1",
+  "name": "Release Test",
+  "body": "the is a test release!",
+  "target": "master",
+  "draft": false,
+  "prerelease": false
+}
