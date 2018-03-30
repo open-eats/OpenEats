@@ -34,10 +34,4 @@ if __name__ == '__main__':
     repos = ['openeats-nginx', 'openeats-api', 'openeats-web', 'OpenEats']
     for r in repos:
         messages += get_commits(r)
-
-    for message in messages:
-        if '*' not in message:
-            print(message)
-    # print('\n'.join([m.split('\r', 1)[0] for m in messages]))
-
-    print('\n'.join(messages))
+    print('\n'.join([m.split('\r', 1)[0] for m in messages]))

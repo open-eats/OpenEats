@@ -83,7 +83,6 @@ if __name__ == '__main__':
         'openeats-api',
         'openeats-web',
         'OpenEats'
-
     ]
 
     # Run a release for all the repos with the data from json file.
