@@ -1,0 +1,8 @@
+{
+  "tag": "1.2.0",
+  "name": "Build process improvement",
+  "body": "Adding JWT support\nAdding support for using slug values in the recipe\nFixing issue with tests always passing\nAdding docs and settings for remote DB config\nNew ui build process\nAdding coverage reports\nUse nginx to serve static\nNginx config to also pass port info to django",
+  "target": "master",
+  "draft": false,
+  "prerelease": false
+}
