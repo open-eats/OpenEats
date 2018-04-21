@@ -1,0 +1,8 @@
+{
+  "tag": "1.3.0",
+  "name": "Support for displaying recipe data as fractions",
+  "body": "Support for displaying recipe data as fractions\nModel changes and migrations to support fractions\nAdding more unit test to APIs\nDelete the offset if we are doing a search from the UI\nCleaning up the quick start script",
+  "target": "master",
+  "draft": false,
+  "prerelease": false
+}
