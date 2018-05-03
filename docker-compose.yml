@@ -15,12 +15,11 @@ services:
       - "8000:8000"
   web:
     build: openeats-web/
-    command: yarn start
+    command: sh -c "yarn install --pure-lockfile && yarn start"
     env_file:
       env_dev.list
     volumes:
       - ./openeats-web:/code
-      - node_modules:/code/node_modules
     depends_on:
       - api
     ports:
@@ -31,8 +30,9 @@ services:
       env_dev.list
     volumes:
       - database:/var/lib/mysql
+    ports:
+      - "3306:3306"
 volumes:
   database:
-  node_modules:
   static-files:
   site-media:

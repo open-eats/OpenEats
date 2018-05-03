@@ -14,9 +14,8 @@ services:
       env_stg.list
   web:
     build: openeats-web/
-    command: yarn start
+    command: sh -c "yarn install --pure-lockfile && yarn start"
     volumes:
-      - node_modules:/code/node_modules
       - public-ui:/code/build
     depends_on:
       - api
@@ -46,7 +45,6 @@ services:
       env_stg.list
 volumes:
   database:
-  node_modules:
   public-ui:
   static-files:
   site-media:
