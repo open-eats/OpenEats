@@ -99,16 +99,11 @@ The API will use this to prevent CORS issues.
 
 EX: `NODE_URL=localhost:8080`
 
-#### NODE_PORT
-The port node is served from.
-
-EX: `NODE_PORT=8080`
-
 #### NODE_API_URL
-The URL and port the frontend will call the API from. 
-For production this should be your domain.
+The hostname/port (my.example.com:8080) the frontend will call the API from. 
+If unset, the UI will call the API from the same hostname/port. If you are not using the default Nginx server that OpenEats comes with, you will either need to set this or configure your own proxy server to redirect all traffic that starts with `/api` or `/admin`.
 
-EX: `NODE_API_URL=http://localhost`
+EX: `NODE_API_URL=http://localhost:8080`, `NODE_API_URL=https://api.example.com`
 
 #### NODE_LOCALE
 The language the UI will be in.

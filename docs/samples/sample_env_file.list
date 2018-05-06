@@ -14,6 +14,5 @@ HTTP_X_FORWARDED_PROTO=true
 # Node config
 NODE_ENV=production
 NODE_URL=localhost:8080
-NODE_PORT=8080
 NODE_API_URL=http://my.domain.com
 NODE_LOCALE=en
