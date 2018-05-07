@@ -2,4 +2,4 @@ version: '2.3'
 services:
   nginx:
     ports:
-      - "80:80"
+      - "8000:80"
