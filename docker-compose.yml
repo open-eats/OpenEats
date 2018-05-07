@@ -15,7 +15,7 @@ services:
       - "8000:8000"
   web:
     build: openeats-web/
-    command: sh -c "yarn install --pure-lockfile && yarn start"
+    command: yarn dev
     env_file:
       env_dev.list
     volumes:

@@ -14,7 +14,7 @@ services:
       env_stg.list
   web:
     build: openeats-web/
-    command: sh -c "yarn install --pure-lockfile && yarn start"
+    command: yarn start
     volumes:
       - public-ui:/code/build
     depends_on:
