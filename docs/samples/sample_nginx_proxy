@@ -1,21 +1,6 @@
 server {
-    # Redirect all http calls to https'
-    # IE: 80 -> 443
-    listen 80;
-    server_name my.site.com;
-    return 301 https://$server_name$request_uri;
-}
-
-server {
-    listen       443 ssl;
+    listen       80;
     server_name  my.site.com;
-
-    # SSL configuration here
-    ssl_certificate     /path/to/cert/fullchain.pem;
-    ssl_certificate_key /path/to/private/key/privkey.pem;
-    ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
-    ssl_ciphers         HIGH:!aNULL:!MD5;
-    add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; ";
 
     # pass requests for dynamic content
     location / {
@@ -24,10 +9,6 @@ server {
         proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header        X-Forwarded-Proto $scheme;
 
-        # Fix the “It appears that your reverse proxy set up is broken" error.
         proxy_pass          http://localhost:7000;
-        proxy_read_timeout  90;
-
-        proxy_redirect      http://localhost:7000 http://my.site.com;
     }
 }
