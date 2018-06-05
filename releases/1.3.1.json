@@ -1,0 +1,8 @@
+{
+  "tag": "1.3.1",
+  "name": "fixing ui caching bugs",
+  "body": "fixing issues with the browse page that was causing recipes to no be displayed correctly when creating new recipes",
+  "target": "master",
+  "draft": false,
+  "prerelease": false
+}
