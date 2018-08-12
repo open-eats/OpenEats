@@ -29,6 +29,10 @@ Add mariadb
 `$ apt-get update`  
 `$ apt-get install mariadb-server`
 
+### Install additional dependencies
+
+apt-get install libmysqlclient-dev libssl-dev
+
 ### Create openeats user and database in mariadb (ssh)
 
 #### Log into your MySQL database
