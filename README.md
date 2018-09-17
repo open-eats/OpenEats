@@ -1,13 +1,5 @@
 # OpenEats Project
 
-API Status:
-[![API Build Status](https://travis-ci.org/open-eats/openeats-api.svg?branch=master)](https://travis-ci.org/open-eats/openeats-api)
-[![Coverage Status](https://coveralls.io/repos/github/open-eats/openeats-api/badge.svg)](https://coveralls.io/github/open-eats/openeats-api)
-
-Web Status:
-[![Web Build Status](https://travis-ci.org/open-eats/openeats-web.svg?branch=master)](https://travis-ci.org/open-eats/openeats-web)
-[![Coverage Status](https://coveralls.io/repos/github/open-eats/openeats-web/badge.svg)](https://coveralls.io/github/open-eats/openeats-web)
-
 OpenEats is a recipe management site that allows users to create, share, and store their personal collection of recipes. This fork uses Django Rest Framework as a backend and React (with flux) as a front end.
 
 The usage for the app is intended for a single user or a small group. For my personal use, I would be an admin user and a few (about 5-6) friends and family would be normal users. Admin users can add other users to the project (no open sign-ups), make changes to the available Cuisines and Courses, and add to the homepage banner. Normal users just have the ability to add recipes. Below are a few of the core features the app provides.
