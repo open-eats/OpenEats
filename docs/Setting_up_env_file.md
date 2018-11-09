@@ -112,5 +112,6 @@ Options:
 - English: en
 - German: de
 - Spanish: es
+- French: fr
 
 EX: `NODE_LOCALE=en`
