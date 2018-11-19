@@ -3,3 +3,10 @@ services:
   nginx:
     ports:
       - "8000:80"
+    restart: always
+  api:
+    restart: always
+  web:
+    restart: on-failure
+  db:
+    restart: always
