@@ -1,0 +1,8 @@
+{
+  "tag": "1.4.0",
+  "name": "Support for displaying recipe data as fractions",
+  "body": "Major Features:\nAllowing course/cuisine to be create when the recipe is.\nCleaning up the way recipes are saved.\nAdding support for comments/ratings.\nAdding backend support for shared lists.\nPlace upcoming menu items on the homepage.\n\nMinor Features:\nIngredient parser improvements.\nAdding French translation.\nFixing the list footer for mobile devices.\nAdding support for Direction categories.\nOther minor bug fixes...",
+  "target": "master",
+  "draft": false,
+  "prerelease": false
+}
