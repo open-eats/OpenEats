@@ -4,7 +4,7 @@
 import json
 import requests
 from requests.auth import HTTPBasicAuth
-from secrets import username, password
+from secrets.secrets import username, password
 
 
 def release(_repo, _tag, _name, _target, _body, _draft, _prerelease):
