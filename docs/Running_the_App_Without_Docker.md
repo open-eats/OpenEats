@@ -1,3 +1,5 @@
+*Please note, most every line that containts commands will require either running as root or sudo*
+
 ## Install Dependencies
 
 `apt-get install python3 python3-pip git build-essential`
@@ -27,7 +29,7 @@ Add mariadb
 ```
 apt-get install software-properties-common dirmngr
 apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xF1656F24C74CD1D8
-add-apt-repository 'deb [arch=amd64,i386,ppc64el] `<http://ftp.bme.hu/pub/mirrors/mariadb/repo/10.1/debian>` stretch main'
+add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://ftp.bme.hu/pub/mirrors/mariadb/repo/10.1/debian stretch main'
 apt-get update
 apt-get install mariadb-server
 ```
@@ -44,13 +46,13 @@ apt-get install mariadb-server
 
 #### Create Database
 
-`create database `**`openeats`**`;`
+`create database openeats;`
 
 #### Create a Database User and Password
 
-*Change username and password. You will have to change in configuration files too-*
+*Change username and password. You will have to change in configuration files too*
 
-`grant all privileges on `**`openeats`**`.* to `**`'username`**`'@'localhost' identified by "`**`password`**`";`
+`grant all privileges on openeats.* to 'username'@'localhost' identified by 'password';`
 
 #### Commit Changes
 
@@ -88,32 +90,32 @@ cd /opt/openeats/openeats-api
 
 ### Edit the Created .env File and Insert the Following Data
 
-*Read the comments carefully and change the necessary parts to your configuration.*
+*Read the comments carefully and change the necessary parts to match your system*
 
-Our api will listen on port 5210.
+Our api will listen on port **5210**
 
 ```
 # Database config
 MYSQL_HOST=localhost
-MYSQL_DATABASE=`**`openeats`**  
-MYSQL_USER=`**`username`**  
-MYSQL_ROOT_PASSWORD=`**`password`**  
-  
-# Django config`  
-API_URL=0.0.0.0:`**`5210`**  
-API_PORT=`**`5210`**  
-DJANGO_SECRET_KEY=`**`CHANGE_THIS:SECRETKEY`**`
-DJANGO_SETTINGS_MODULE=base.settings  
+MYSQL_DATABASE=openeats
+MYSQL_USER=username
+MYSQL_ROOT_PASSWORD=password
+
+# Django config
+API_URL=0.0.0.0:5210
+API_PORT=5210
+DJANGO_SECRET_KEY=<CHANGE_THIS:SECRETKEY>
+DJANGO_SETTINGS_MODULE=base.settings
 DJANGO_DEBUG=False
-ALLOWED_HOST=`**`openeats.domain.com`**`
+ALLOWED_HOST=<openeats.domain.com>
   
 # If you are serving content behind an HTTPS proxy,
 # Set this to `true`.
-# See: `<https://docs.djangoproject.com/en/1.10/ref/settings/#secure-proxy-ssl-header>  
+# See: <https://docs.djangoproject.com/en/1.10/ref/settings/#secure-proxy-ssl-header>
 HTTP_X_FORWARDED_PROTO=true
   
 # Node config
 NODE_ENV=development
 NODE_URL=openeats.domain.com:5200
-NODE_API_URL=`<https://openeats.domain.com>
+NODE_API_URL=https://openeats.domain.com
 ```
