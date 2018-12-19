@@ -12,15 +12,15 @@ The usage for the app is intended for a single user or a small group. For my per
 - Quickly print recipe.
 - Linking recipes and ingredient grouping.
 
-### [Read the docs on getting started here!](https://github.com/open-eats/OpenEats/blob/master/docs/Running_the_App.md)
+### [Read the docs on getting started here!](docs/Running_the_App.md)
 
 If you don't wish to use docker, see installation instructions here:
-[Markdown](https://github.com/open-eats/OpenEats/blob/master/docs/Running_the_App_Without_Docker.md) OR [Media Wiki!](https://wiki.tothnet.hu/index.php/Install_OpenEats_without_Docker_and_run_on_Apache2)
+[Markdown](docs/Running_the_App_Without_Docker.md) OR [Media Wiki!](https://wiki.tothnet.hu/index.php/Install_OpenEats_without_Docker_and_run_on_Apache2)
 
 
-### [The Update guide can be found here!](https://github.com/open-eats/OpenEats/blob/master/docs/Updating_the_App.md)
+### [The Update guide can be found here!](docs/Updating_the_App.md)
 
 # Contributing
-Please read the [contribution guidelines](https://github.com/open-eats/OpenEats/blob/master/CONTRIBUTING.md) in order to make the contribution process easy and effective for everyone involved.
+Please read the [contribution guidelines](CONTRIBUTING.md) in order to make the contribution process easy and effective for everyone involved.
 
- For a guide on how to setup an environment for development see [this guide](https://github.com/open-eats/OpenEats/blob/master/docs/Running_the_App_in_dev.md).
+For a guide on how to setup an environment for development see [this guide](docs/Running_the_App_in_dev.md).
