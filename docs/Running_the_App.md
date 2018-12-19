@@ -1,6 +1,6 @@
 # Running the App
 
-The recommended way to run this app is with docker and docker-compose. You can install docker [here](https://www.docker.com/community-edition#/download) and docker-compose [here](https://docs.docker.com/compose/install/#prerequisites). If you are not familiar with docker you can read more about it on [their website](https://www.docker.com/what-docker).
+The recommended way to run this app is with docker and docker-compose. You can install docker [here](https://hub.docker.com/search/?type=edition&offering=community) and docker-compose [here](https://docs.docker.com/compose/install/#prerequisites). If you are not familiar with docker you can read more about it on [their website](https://www.docker.com/what-docker).
 
 ### Setup docker configuration for production
 
