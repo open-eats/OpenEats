@@ -81,3 +81,6 @@ If you want to add some test data you can load a few recipes and some news data.
 
 ### Setting up a Proxy Server and HTTPS
 The nginx reverse proxy will default to run on port 80. You will most likely want to change the port that nginx runs on. See [Creating a proxy server for docker](Creating_a_proxy_server_for_docker.md) for more information on how to configure an nginx server to serve OpenEats.
+
+### HTTPS with certbot container
+Another option to get OpenEats running with HTTPS is explained [here](Use_HTTPS_with_certbot_container.md).
