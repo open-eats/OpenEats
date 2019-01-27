@@ -24,7 +24,7 @@ nginx -g "daemon off;" &
 cat <<EOF | python /code/manage.py shell
 from django.contrib.auth import get_user_model
 User = get_user_model()
-User.objects.filter(username="openeats").exists() or \
+User.objects.filter(is_superuser=True).exists() or \
     User.objects.create_superuser("openeats", "", "openeats")
 EOF
 

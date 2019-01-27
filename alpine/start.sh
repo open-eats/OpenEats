@@ -16,5 +16,12 @@ nginx -g "daemon off;" &
 /code/manage.py migrate --no-input
 /code/manage.py collectstatic --no-input
 
+cat <<EOF | python /code/manage.py shell
+from django.contrib.auth import get_user_model
+User = get_user_model()
+User.objects.filter(is_superuser=True).exists() or \
+    User.objects.create_superuser("openeats", "", "openeats")
+EOF
+
 # Start up gunicorn
 /code/base/gunicorn_start.sh
