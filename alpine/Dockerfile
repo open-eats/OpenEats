@@ -15,6 +15,8 @@ ENV OPENEATS_VERSION=1.4.0 \
     MYSQL_USER=openeats \
     MYSQL_ROOT_PASSWORD=openeats \
     # Django config
+    SUPERUSER_NAME=openeats \
+    SUPERUSER_PASSWORD=openeats \
     API_URL=0.0.0.0:8000 \
     DJANGO_SETTINGS_MODULE=base.settings \
     DJANGO_DEBUG=False \
