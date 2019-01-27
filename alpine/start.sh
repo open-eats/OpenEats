@@ -12,4 +12,9 @@ sed -i "s/API_PORT/$API_PORT/g" /etc/nginx/conf.d/default.conf;
 nginx -g "daemon off;" &
 
 # Start the api
-/code/base/prod-entrypoint.sh
+# Update the DB if it needs it and compile static files.
+/code/manage.py migrate --no-input
+/code/manage.py collectstatic --no-input
+
+# Start up gunicorn
+/code/base/gunicorn_start.sh

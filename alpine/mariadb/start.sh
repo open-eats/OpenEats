@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # mariadb
-/scripts/create-database.sh
+/startup/create-database.sh
 
 # NGINX doesn't let you use ENV vars within the conf file.
 # We use sed to set the env vars we need.

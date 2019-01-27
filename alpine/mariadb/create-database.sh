@@ -1,15 +1,5 @@
 #!/bin/sh
 
-# execute any pre-init scripts, useful for images
-# based on this image
-for i in /scripts/pre-init.d/*sh
-do
-	if [ -e "${i}" ]; then
-		echo "[i] pre-init.d - processing $i"
-		. "${i}"
-	fi
-done
-
 if [ ! -d "/run/mysqld" ]; then
 	mkdir -p /run/mysqld
 	chown -R mysql:mysql /run/mysqld
