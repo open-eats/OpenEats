@@ -9,11 +9,12 @@ ENV OPENEATS_VERSION=1.4.0 \
     API_HOST=0.0.0.0 \
     API_PORT=8000 \
     # Database config
-    MYSQL_HOST=openeats-mariadb \
+    MYSQL_HOST=localhost \
     MYSQL_PORT=3306 \
     MYSQL_DATABASE=openeats \
     MYSQL_USER=openeats \
     MYSQL_PASSWORD=openeats \
+    MYSQL_ROOT_PASSWORD=openeats \
     # Django config
     SUPERUSER_NAME=openeats \
     SUPERUSER_PASSWORD=openeats \
@@ -29,39 +30,35 @@ ENV OPENEATS_VERSION=1.4.0 \
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY start.sh create-database.sh /startup/
 
-RUN apk add --update-cache --update \
+RUN apk add --update-cache --update --virtual builddeps \
         # fetch deps
-        ca-certificates tar openssl \
-        # database
-        mariadb
-        # node deps
-        yarn \
-        # api deps
-        mariadb-dev \
-        python3 \
-        jpeg-dev \
-        zlib-dev \
-        freetype-dev \
-        lcms2-dev \
-        openjpeg-dev \
-        tiff-dev \
-        tk-dev \
-        tcl-dev \
-        gcc \
+        tar \
+        openssl \
+        ca-certificates \
+        # pillow deps
         python3-dev \
-        musl-dev && \
+        libjpeg-turbo-dev \
+        gcc \
+        musl-dev \
+        # node deps
+        yarn && \
+    apk add --update-cache --update \
+        mariadb-dev \
+        mariadb \
+        python3 && \
     cd /tmp && \
     wget -O openeats-web.tar.gz "https://github.com/open-eats/openeats-web/archive/$OPENEATS_VERSION.tar.gz" && \
     wget -O openeats-api.tar.gz "https://github.com/open-eats/openeats-api/archive/$OPENEATS_VERSION.tar.gz" && \
     tar -xzf openeats-web.tar.gz && rm openeats-web.tar.gz && mv openeats-web-$OPENEATS_VERSION /openeats-web && \
     tar -xzf openeats-api.tar.gz && rm openeats-api.tar.gz && mv openeats-api-$OPENEATS_VERSION /code && \
-    apk del tar openssl && \
-    chmod +x /code/base/prod-entrypoint.sh && \
-    pip3 install -r /code/base/requirements.txt && \
+    mkdir -p /var/www/html/openeats-static /code/static-files /code/site-media && \
+    ln -s /code/static-files /var/www/html/openeats-static/ && \
+    ln -s /code/site-media /var/www/html/openeats-static/ && \
     ln -s /usr/bin/python3 /usr/local/bin/python && \
-    mkdir -p /var/www/html/openeats-static && cd /openeats-web && \
-    yarn install --pure-lockfile --production=false && yarn start && \
+    chmod 755 /startup /code/base/prod-entrypoint.sh && \
+    pip3 install -r /code/base/requirements.txt && \
+    cd /openeats-web && yarn install --pure-lockfile --production=false && yarn start && \
     cp -r build/ /var/www/html/openeats-static/public-ui && \
-    chmod 755 /startup
+    apk del builddeps
 
 CMD ["/startup/start.sh"]

@@ -29,37 +29,35 @@ ENV OPENEATS_VERSION=1.4.0 \
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY start.sh /startup/
 
-RUN apk add --update-cache --update \
+RUN apk add --update-cache --update --virtual builddeps \
         # fetch deps
-        ca-certificates tar openssl \
-        # node deps
-        yarn \
-        # api deps
-        mariadb-dev \
-        python3 \
-        jpeg-dev \
-        zlib-dev \
-        freetype-dev \
-        lcms2-dev \
-        openjpeg-dev \
-        tiff-dev \
-        tk-dev \
-        tcl-dev \
-        gcc \
+        tar \
+        openssl \
+        ca-certificates \
+        # pillow deps
         python3-dev \
-        musl-dev && \
+        libjpeg-turbo-dev \
+        gcc \
+        musl-dev \
+        # node deps
+        yarn && \
+    apk add --update-cache --update \
+        mariadb-dev \
+        python3 && \
     cd /tmp && \
     wget -O openeats-web.tar.gz "https://github.com/open-eats/openeats-web/archive/$OPENEATS_VERSION.tar.gz" && \
     wget -O openeats-api.tar.gz "https://github.com/open-eats/openeats-api/archive/$OPENEATS_VERSION.tar.gz" && \
     tar -xzf openeats-web.tar.gz && rm openeats-web.tar.gz && mv openeats-web-$OPENEATS_VERSION /openeats-web && \
     tar -xzf openeats-api.tar.gz && rm openeats-api.tar.gz && mv openeats-api-$OPENEATS_VERSION /code && \
-    apk del tar openssl && \
     chmod +x /code/base/prod-entrypoint.sh && \
     pip3 install -r /code/base/requirements.txt && \
     ln -s /usr/bin/python3 /usr/local/bin/python && \
-    mkdir -p /var/www/html/openeats-static && cd /openeats-web && \
-    yarn install --pure-lockfile --production=false && yarn start && \
+    mkdir -p /var/www/html/openeats-static /code/static-files /code/site-media && \
+    cd /openeats-web && yarn install --pure-lockfile --production=false && yarn start && \
     cp -r build/ /var/www/html/openeats-static/public-ui && \
-    chmod 755 /startup
+    ln -s /code/static-files /var/www/html/openeats-static/ && \
+    ln -s /code/site-media /var/www/html/openeats-static/ && \
+    chmod 755 /startup && \
+    apk del tar openssl yarn
 
 CMD ["/startup/start.sh"]
