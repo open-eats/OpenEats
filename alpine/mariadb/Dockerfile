@@ -1,8 +1,5 @@
 FROM nginx:1.14.2-alpine
 
-#ENV NODE_API_URL http://my.domain.com
-#ENV ALLOWED_HOST my.domain.com
-#ENV DJANGO_SECRET_KEY sdfsadfas32e98zsdvhhsnz6udvbksjdhfi4galshjfg
 ENV OPENEATS_VERSION=1.4.0 \
     PATH=/usr/local/bin:$PATH \
     # nginx config
