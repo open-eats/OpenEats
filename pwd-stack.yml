@@ -1,7 +1,6 @@
 version: '3.1'
 services:
   openeats:
-    container_name: openeats
     image: maduvef/openeats:mariadb
     ports:
       - 80:80

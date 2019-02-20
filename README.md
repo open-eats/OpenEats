@@ -22,7 +22,7 @@ If you don't wish to use docker, see installation instructions here:
 
 # Demo
 
-[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/MrNuggelz/OpenEats/play-with-docker/pwd-stack.yml)
+[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/MrNuggelz/OpenEats/master/pwd-stack.yml)
 
 # Contributing
 Please read the [contribution guidelines](CONTRIBUTING.md) in order to make the contribution process easy and effective for everyone involved.
