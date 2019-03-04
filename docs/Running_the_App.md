@@ -30,6 +30,13 @@ Most of the settings in your `env_prod.list` can stay the same as `env_stg.list`
 - [NODE_API_URL](Setting_up_env_file.md#NODE_API_URL)
 
 
+##### Note For LAN/Internet or static IP hosting 
+If you are going to be hosting OpenEats from LAN/intranet or a static IP then you should double check two things within your environment file. 
+
+Given that the IP address for the OpenEats server is `192.168.0.1` and port is `1234`.
+1. Confirm that `ALLOWED_HOST=192.168.0.1`
+2. Confirm that `NODE_API_URL=http://192.168.0.1:1234`
+
 #### Connecting to a remote DB
 If you are connecting the API to a remote DB (any non-dockerized DB) you need to setup the following configs to your env file.
 
@@ -72,6 +79,7 @@ Follow the prompts given to create your user. You can do this as many times as y
 
 If you want to add some test data you can load a few recipes and some news data. This data isn't really needed unless you just wanna see how the app looks and if its working.
 ```bash
+docker-compose -f docker-prod.yml run --rm --entrypoint 'sh' api
 ./manage.py loaddata course_data.json
 ./manage.py loaddata cuisine_data.json
 ./manage.py loaddata news_data.json
