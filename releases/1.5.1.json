@@ -1,0 +1,8 @@
+{
+  "tag": "1.5.1",
+  "name": "Prevents logged out users from being redirected on the homepage",
+  "body": "Check if a user is login in before showing the menu content on the homepage. Doing this prevents logged out users from being redirected on the homepage.",
+  "target": "master",
+  "draft": false,
+  "prerelease": false
+}
