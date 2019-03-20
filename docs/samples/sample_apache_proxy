@@ -1,0 +1,15 @@
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+    ServerName my.domain.com
+
+    # This passes all connections to this subdomain to the docker
+    # container for OpenEats
+    ProxyPreserveHost On
+
+    ProxyPass / http://localhost:7000/
+
+    # Maintain an SSL connection in headers to the docker container
+    RequestHeader set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
+    RequestHeader set "X-Forwarded-SSL" expr=%{HTTPS}
+</VirtualHost>
+</IfModule>
