@@ -13,60 +13,61 @@
 ### Install Nodejs
 
 ```
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt-get install nodejs npm
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
 ```
+To ensure you get the up-to-date version of node, you'll need to make a modification to your apt-cache policy.
 
-Further help to installing nodejs:
-<https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-debian-8>
+```
+nano /etc/apt/preferences.d/nodesource
+```
+Insert the following:
 
+```
+Package: *
+Pin: origin deb.nodesource.com
+Pin-Priority: 600
+```
+Then:
 
+```sudo apt-get install nodejs```
 
 ## Database
 
-We will use Mariadb but if you have working MySQL server you can skip the Mariadb installation part.
+We will use MariaDB.
 
 ### Install MariaDB
-
-Add mariadb
-[repository](https://downloads.mariadb.org/mariadb/repositories/) to
-`/etc/apt/sources.list.d/mariadb.conf`
-
 ```
-apt-get install software-properties-common dirmngr
-apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xF1656F24C74CD1D8
-add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://ftp.bme.hu/pub/mirrors/mariadb/repo/10.1/debian stretch main'
-apt-get update
-apt-get install mariadb-server
+apt install mariadb-server
 ```
+Don't forget to run `mysql_secure_installation`!
 
 ### Install Additional Dependencies
 
-`apt-get install libmysqlclient-dev libssl-dev`
+`apt install default-libmysqlclient-dev libssl-dev`
 
 ### Create OpenEats User and Database in MariaDB (ssh)
 
 #### Log Into Your MySQL Database
 
-`mysql -p`
+`mysql`
 
 #### Create Database
 
-`create database openeats;`
+`CREATE DATABASE openeats;`
 
 #### Create a Database User and Password
 
 *Change username and password. You will have to change that in the configuration files, too.*
 
-`grant all privileges on openeats.* to 'username'@'localhost' identified by 'password';`
+`GRANT ALL PRIVILEGES ON openeats.* TO 'username'@'localhost' IDENTIFIED BY 'password';`
 
 #### Commit Changes
 
-`flush privileges;`
+`FLUSH PRIVILEGES;`
 
 #### Exit From MySQL
 
-`exit;`
+`EXIT;`
 
 
 
@@ -110,7 +111,7 @@ MYSQL_USER=username
 MYSQL_ROOT_PASSWORD=password
 
 # Django config
-API_URL=0.0.0.0:5210
+API_URL=127.0.0.1:5210
 API_PORT=5210
 DJANGO_SECRET_KEY=<CHANGE_THIS:SECRETKEY>
 DJANGO_SETTINGS_MODULE=base.settings
@@ -128,6 +129,7 @@ NODE_URL=openeats.domain.com:5200
 NODE_API_URL=https://openeats.domain.com
 NODE_LOCALE=en
 ```
+The `DJANGO_SECRET_KEY` should be reasonably random-looking, using `pwgen` or random characters is recommended.
 
 ### Edit the /opt/openeats/openeats-api/base/prod-entrypoint.sh file
 
@@ -145,6 +147,28 @@ python3 $BASEDIR/manage.py collectstatic --no-input
 # Start up gunicorn
 bash $BASEDIR/base/gunicorn_start.sh
 ```
+
+### Edit the /opt/openeats/openeats-api/base/settings.py file
+
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('MYSQL_DATABASE', 'openeats'),
+        'USER': os.environ.get('MYSQL_USER', 'root'),
+        'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD', ''),
+        'HOST': os.environ.get('MYSQL_HOST', 'db'),
+        'PORT': os.environ.get('MYSQL_PORT', '3306'),
+        'OPTIONS': {
+            'charset': 'utf8mb4'
+        },
+        'TEST': {
+            'NAME': os.environ.get('MYSQL_TEST_DATABASE', 'test_openeats')
+        }
+    }
+}
+```
+Edit this to include the same options you set in your `.env`.
 
 ### Edit the /opt/openeats/openeats-api/base/gunicorn_start.sh file
 
@@ -244,7 +268,7 @@ export MYSQL_USER=username
 export MYSQL_ROOT_PASSWORD=password
 
 # Django config
-export API_URL=0.0.0.0:5210
+export API_URL=127.0.0.1:5210
 export API_PORT=5210
 export DJANGO_SECRET_KEY=<CHANGE_THIS:SECRETKEY>
 export DJANGO_SETTINGS_MODULE=base.settings
@@ -273,7 +297,14 @@ cd /opt/openeats/openeats-web/
 ### Install the dependecies
 
 ```
-npm install
+npm install --update
+```
+`node-sass` should blow up here. That's okay, we'll fix it.
+```
+npm rebuild node-sass --force --unsafe-perms=yes --allow-root
+```
+This forces `node-sass` to install on Node 13. `npm` ***will*** get angry at you but it will do what you ask here.
+```
 npm install yarn
 ```
 
@@ -371,9 +402,11 @@ ln -s /opt/openeats/openeats-api/site-media /opt/openeats/openeats-apache2/site-
 
 ### Reload Apache configuration
 
-`service apache2 reload`
+`service apache2 restart`
 
-Your openeats installation should run on your http://openeats.domain.com 
+Your openeats installation should run on your http://openeats.domain.com.
+
+It is HIGHLY recommended you eventually switch over to an HTTPS setup. Let's Encrypt is great for getting that set up.
 
 
 ## Updating openeats
