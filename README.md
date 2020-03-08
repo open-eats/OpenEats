@@ -15,7 +15,7 @@ The usage for the app is intended for a single user or a small group. For my per
 ### [Read the docs on getting started here!](docs/Running_the_App.md)
 
 If you don't wish to use docker, see installation instructions here:
-[Markdown](docs/Running_the_App_Without_Docker.md) OR [Media Wiki!](https://wiki.tothnet.hu/index.php/Install_OpenEats_without_Docker_and_run_on_Apache2)
+[Markdown](docs/Running_the_App_Without_Docker.md) OR [Media Wiki!](https://wiki.tothnet.hu/books/other/page/install-openeats-without-docker-and-run-on-apache2)
 
 
 ### [The Update guide can be found here!](docs/Updating_the_App.md)
