@@ -23,6 +23,8 @@ services:
       env_stg.list
   db:
     image: mariadb
+    volumes:
+      - database:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 20s
