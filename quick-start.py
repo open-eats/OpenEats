@@ -19,11 +19,11 @@ def update_image_tags(version=None):
     version = '''version: '2.3'
 services:
   api:
-    image: openeats/openeats-api:%s
+    image: adaptiman/openeats-api:%s
   web:
-    image: openeats/openeats-web:%s
+    image: adaptiman/openeats-web:%s
   nginx:
-    image: openeats/openeats-nginx:%s
+    image: adaptiman/openeats-nginx:%s
 ''' % (version, version, version)
     with open('docker-prod.version.yml', 'w') as f:
         f.write(version)
@@ -35,9 +35,9 @@ def download_images(version=None):
     print("==================")
     print("Downloading Images")
     print("==================")
-    call(['docker', 'pull', 'openeats/openeats-api:' + version])
-    call(['docker', 'pull', 'openeats/openeats-web:' + version])
-    call(['docker', 'pull', 'openeats/openeats-nginx:' + version])
+    call(['docker', 'pull', 'adaptiman/openeats-api:' + version])
+    call(['docker', 'pull', 'adaptiman/openeats-web:' + version])
+    call(['docker', 'pull', 'adaptiman/openeats-nginx:' + version])
 
 
 def start_containers():

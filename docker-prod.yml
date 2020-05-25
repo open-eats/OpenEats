@@ -1,7 +1,7 @@
 version: '2.3'
 services:
   api:
-    image: openeats/openeats-api
+    image: adaptiman/openeats-api
     command: /startup/prod-entrypoint.sh
     restart: on-failure
     volumes:
@@ -13,7 +13,7 @@ services:
     env_file:
       env_prod.list
   web:
-    image: openeats/openeats-web
+    image: adaptiman/openeats-web
     command: yarn start
     depends_on:
       - api
@@ -32,7 +32,7 @@ services:
     env_file:
       env_prod.list
   nginx:
-    image: openeats/openeats-nginx
+    image: adaptiman/openeats-nginx
     command: ./start.sh
     volumes:
       - static-files:/var/www/html/openeats-static/static-files
