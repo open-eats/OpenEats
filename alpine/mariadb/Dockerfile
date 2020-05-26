@@ -65,7 +65,7 @@ RUN apk add --no-cache --virtual .build-deps-yarn curl gnupg tar \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \
   && apk del .build-deps-yarn
 
-ENV OPENEATS_VERSION=1.4.0 \
+ENV OPENEATS_VERSION=master \
     PATH=/usr/local/bin:$PATH \
     # nginx config
     API_HOST=0.0.0.0 \
@@ -119,6 +119,7 @@ RUN apk add --update-cache --update --virtual builddeps \
     pip3 install -r /code/base/requirements.txt && \
     cd /openeats-web && yarn install --pure-lockfile --production=false && yarn start && \
     cp -r build/ /var/www/html/openeats-static/public-ui && \
-    apk del builddeps
+    apk del builddeps && \
+    chmod -R 755 /startup
 
 CMD ["/startup/start.sh"]
