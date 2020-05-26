@@ -1,0 +1,20 @@
+# Database config
+MYSQL_DATABASE=openeats
+MYSQL_ROOT_PASSWORD=root
+
+# Django config
+API_URL=0.0.0.0:443
+API_PORT=443
+DJANGO_SECRET_KEY=sdfsdffd34qp3uvnnwervunqevsdvhhsnz6udvbksjdhfi4galshjfg
+DJANGO_SETTINGS_MODULE=base.settings
+DJANGO_DEBUG=False
+#ALLOWED_HOST=sweeneydev.southcentralus.cloudapp.azure.com
+ALLOWED_HOST=www.cookbook.thesweeneys.org
+HTTP_X_FORWARDED_PROTO=true
+
+# Node config
+NODE_ENV=production
+NODE_URL=localhost:8080
+#NODE_API_URL=http://sweeneydev.southcentralus.cloudapp.azure.com:80
+NODE_API_URL=https://www.cookbook.thesweeneys.org
+NODE_LOCALE=en

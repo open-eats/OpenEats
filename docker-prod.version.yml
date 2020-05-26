@@ -1,0 +1,8 @@
+version: '2.3'
+services:
+  api:
+    image: adaptiman/openeats-api:latest
+  web:
+    image: adaptiman/openeats-web:latest
+  nginx:
+    image: adaptiman/openeats-nginx:latest

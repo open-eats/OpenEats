@@ -1,0 +1,17 @@
+version: '2.3'
+services:
+  nginx:
+    ports:
+      - "80:80"
+      - "443:443"  
+    restart: always
+    volumes:
+      - /etc/ssl/certs/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
+      - /docker-volumes/etc/letsencrypt/live/cookbook.thesweeneys.org/fullchain.pem:/etc/letsencrypt/live/cookbook.thesweeneys.org/fullchain.pem
+      - /docker-volumes/etc/letsencrypt/live/cookbook.thesweeneys.org/privkey.pem:/etc/letsencrypt/live/cookbook.thesweeneys.org/privkey.pem
+  api:
+    restart: always
+  web:
+    restart: on-failure
+  db:
+    restart: always
