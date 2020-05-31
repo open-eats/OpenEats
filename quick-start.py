@@ -19,11 +19,11 @@ def update_image_tags(version=None):
     version = '''version: '2.3'
 services:
   api:
-    image: openeats/openeats-api:%s
+    image: atroxtartarus/openeats-api:%s
   web:
-    image: openeats/openeats-web:%s
+    image: atroxtartarus/openeats-web:%s
   nginx:
-    image: openeats/openeats-nginx:%s
+    image: atroxtartarus/openeats-nginx:%s
 ''' % (version, version, version)
     with open('docker-prod.version.yml', 'w') as f:
         f.write(version)
