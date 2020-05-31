@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # encoding: utf-8
 
 from time import sleep
@@ -35,9 +35,9 @@ def download_images(version=None):
     print("==================")
     print("Downloading Images")
     print("==================")
-    call(['docker', 'pull', 'openeats/openeats-api:' + version])
-    call(['docker', 'pull', 'openeats/openeats-web:' + version])
-    call(['docker', 'pull', 'openeats/openeats-nginx:' + version])
+   # call(['docker', 'pull', 'openeats/openeats-api:' + version])
+   # call(['docker', 'pull', 'openeats/openeats-web:' + version])
+   # call(['docker', 'pull', 'openeats/openeats-nginx:' + version])
 
 
 def start_containers():
