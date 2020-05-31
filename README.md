@@ -1,3 +1,5 @@
+This fork adds support for raspberryPi/ARM docker images. The quick-start.py script uses the new docker hub images (see my forks of the other OpenEats repos). The main differences are some newer base-images. This may introduce some new errors, but this version is running at my home and it seems to run smoothly.
+
 # OpenEats Project
 
 OpenEats is a recipe management site that allows users to create, share, and store their personal collection of recipes. This fork uses Django Rest Framework as a backend and React (with flux) as a front end.
