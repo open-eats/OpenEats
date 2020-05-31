@@ -1,7 +1,7 @@
 version: '2.3'
 services:
   api:
-    image: openeats/openeats-api
+    image: atroxtartarus/openeats-api
     command: /startup/prod-entrypoint.sh
     restart: on-failure
     volumes:
@@ -13,7 +13,7 @@ services:
     env_file:
       env_prod.list
   web:
-    image: openeats/openeats-web
+    image: atroxtartarus/openeats-web
     command: yarn start
     depends_on:
       - api
@@ -22,7 +22,7 @@ services:
     env_file:
       env_prod.list
   db:
-    image: mariadb:5.5.64
+    image: arm64v8/mariadb
     volumes:
       - database:/var/lib/mysql
     healthcheck:
@@ -32,7 +32,7 @@ services:
     env_file:
       env_prod.list
   nginx:
-    image: openeats/openeats-nginx
+    image: atroxtartarus/openeats-nginx
     command: ./start.sh
     volumes:
       - static-files:/var/www/html/openeats-static/static-files
