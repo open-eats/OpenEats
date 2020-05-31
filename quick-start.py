@@ -35,9 +35,9 @@ def download_images(version=None):
     print("==================")
     print("Downloading Images")
     print("==================")
-   # call(['docker', 'pull', 'openeats/openeats-api:' + version])
-   # call(['docker', 'pull', 'openeats/openeats-web:' + version])
-   # call(['docker', 'pull', 'openeats/openeats-nginx:' + version])
+    call(['docker', 'pull', 'atroxtartarus/openeats-api:' + version])
+    call(['docker', 'pull', 'atroxtartarus/openeats-web:' + version])
+    call(['docker', 'pull', 'atroxtartarus/openeats-nginx:' + version])
 
 
 def start_containers():
