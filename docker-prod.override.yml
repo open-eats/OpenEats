@@ -9,6 +9,8 @@ services:
       - /etc/ssl/certs/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
       - /docker-volumes/etc/letsencrypt/live/cookbook.thesweeneys.org/fullchain.pem:/etc/letsencrypt/live/cookbook.thesweeneys.org/fullchain.pem
       - /docker-volumes/etc/letsencrypt/live/cookbook.thesweeneys.org/privkey.pem:/etc/letsencrypt/live/cookbook.thesweeneys.org/privkey.pem
+#for certbot challenges
+      - /docker-volumes/data/letsencrypt:/data/letsencrypt
   api:
     restart: always
   web:
