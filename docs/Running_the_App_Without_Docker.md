@@ -169,6 +169,10 @@ DATABASES = {
 }
 ```
 Edit this to include the same options you set in your `.env`.
+If you are using the api behind a reverse proxy, as in this guide, then the following line should be added to the settings file in order for the api to generate the correct absolute URI's:
+```
+USE_X_FORWARDED_HOST = True
+```
 
 ### Edit the /opt/openeats/openeats-api/base/gunicorn_start.sh file
 
