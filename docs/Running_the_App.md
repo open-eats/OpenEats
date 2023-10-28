@@ -57,6 +57,7 @@ If you are connecting the API to a remote DB (any non-dockerized DB) you need to
 
 - [MYSQL_DATABASE](Setting_up_env_file.md#MYSQL_DATABASE)
 - [MYSQL_USER](Setting_up_env_file.md#MYSQL_USER)
+- [MYSQL_ROOT_PASSWORD](Setting_up_env_file.md#MYSQL_ROOT_PASSWORD)
 - [MYSQL_HOST](Setting_up_env_file.md#MYSQL_HOST)
 - [MYSQL_PORT](Setting_up_env_file.md#MYSQL_PORT)
 
