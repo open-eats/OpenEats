@@ -1,0 +1,21 @@
+version: '2.3'
+services:
+  nginx:
+    ports:
+      - "80:80"
+      - "443:443"  
+    restart: always
+    volumes:
+      # These are the default paths created by the certbot tutorial located at
+      # https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx
+      - /etc/ssl/certs/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
+      - /docker-volumes/etc/letsencrypt/live/my.domain.com/fullchain.pem:/etc/letsencrypt/live/my.domain.com/fullchain.pem
+      - /docker-volumes/etc/letsencrypt/live/my.domain.com/privkey.pem:/etc/letsencrypt/live/my.domain.com/privkey.pem
+      # for certbot challenges
+      - /docker-volumes/data/letsencrypt:/data/letsencrypt
+  api:
+    restart: always
+  web:
+    restart: on-failure
+  db:
+    restart: always
