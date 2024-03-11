@@ -34,6 +34,13 @@ See [Setting_up_env_file.md](Setting_up_env_file.md) for a complete description 
 - [NODE_API_URL](Setting_up_env_file.md#NODE_API_URL)
 
 
+##### Note For LAN/Internet or static IP hosting 
+If you are going to be hosting OpenEats from LAN/intranet or a static IP then you should double check two things within your environment file. 
+
+Given that the IP address for the OpenEats server is `192.168.0.1` and port is `1234`.
+1. Confirm that `ALLOWED_HOST=192.168.0.1`
+2. Confirm that `NODE_API_URL=http://192.168.0.1:1234`
+
 ##### Note on the ALLOWED_HOST option
 The ALLOWED_HOST option must be set equal to the domain or IP address that users will access the site from.
 For example, if you are hosting on "mydomain.com", enter:
