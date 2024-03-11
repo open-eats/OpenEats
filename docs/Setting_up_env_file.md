@@ -35,8 +35,8 @@ EX: `MYSQL_PORT=3306`
 
 ## Django config
 #### API_URL
-This URL and port combination is used my gunicorn to server the API.
-For docker instances we need to server via `0.0.0.0`.
+This URL and port combination is used by gunicorn to serve the API.
+For docker instances we need to serve via `0.0.0.0`.
 `0.0.0.0` means "all IPv4 addresses on the local machine". 
 If a host has two IP addresses, 192.168.1.1 and 10.1.2.1, 
 and a server running on the host listens on 0.0.0.0, 
@@ -64,7 +64,7 @@ The settings file that django will use.
 EX: `DJANGO_SETTINGS_MODULE=base.settings`
 
 #### DJANGO_DEBUG
-Set environment to the Django app in.
+Set the debug environment of the Django app.
 This should be set to `False` in production and `True` to debug any issues.
 
 EX: `DJANGO_DEBUG=False`

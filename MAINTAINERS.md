@@ -12,12 +12,12 @@ Maintainers
 ===========
 
 - Hermann Käser <hermann.kaser@gmail.com>
-- Ryan Noelk <ryannoelk@gmail.com>
+- Rusty Myers <rustymyers@gmail.com>
 
 Contributors
 ===========
 
+- Ryan Noelk <ryannoelk@gmail.com>
 - Chris McDonald
 - Louis-Philippe Asselin <louisphilippeasselin@gmail.com>
 - qgriffith
-- Rusty Myers <rustymyers@gmail.com>

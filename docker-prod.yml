@@ -22,7 +22,9 @@ services:
     env_file:
       env_prod.list
   db:
-    image: mariadb
+    image: mariadb:5.5.64
+    volumes:
+      - database:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 20s
