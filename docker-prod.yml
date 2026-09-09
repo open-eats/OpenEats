@@ -22,7 +22,7 @@ services:
     env_file:
       env_prod.list
   db:
-    image: mariadb:5.5.64
+    image: mariadb
     volumes:
       - database:/var/lib/mysql
     healthcheck:

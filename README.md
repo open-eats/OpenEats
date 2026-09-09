@@ -12,17 +12,14 @@ The usage for the app is intended for a single user or a small group. For my per
 - Quickly print recipe.
 - Linking recipes and ingredient grouping.
 
-### [Read the docs on getting started here!](docs/Running_the_App.md)
+## [Read the docs on getting started here!](docs/Running_the_App.md)
 
 If you don't wish to use docker, see installation instructions here:
 [Markdown](docs/Running_the_App_Without_Docker.md) OR [Media Wiki!](https://wiki.tothnet.hu/books/other/page/install-openeats-without-docker-and-run-on-apache2)
 
 
-### [The Update guide can be found here!](docs/Updating_the_App.md)
+## [The Update guide can be found here!](docs/Updating_the_App.md)
 
-# Demo
-
-[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/MrNuggelz/OpenEats/master/pwd-stack.yml)
 
 # Contributing
 Please read the [contribution guidelines](CONTRIBUTING.md) in order to make the contribution process easy and effective for everyone involved.
